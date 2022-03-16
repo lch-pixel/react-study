@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { CountContext } from "../Contexts/Count";
+
 function SearchOption() {
+  const { plusCount } = useContext(CountContext);
+
   let options = [];
 
   for (let i = 1; i <= 100; i++) {
@@ -8,7 +13,7 @@ function SearchOption() {
   return (
     <>
       <select>{options}</select>
-      <button>검색</button>
+      <button onClick={plusCount}>검색</button>
     </>
   );
 }
