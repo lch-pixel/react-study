@@ -1,19 +1,20 @@
-import { useContext } from "react";
+import { createRef, useContext } from "react";
 import { CountContext } from "../Contexts/Count";
 
 function SearchOption() {
-  const { plusCount } = useContext(CountContext);
+  const { search } = useContext(CountContext);
+  const idSelectRef = createRef();
 
   let options = [];
 
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 10; i++) {
     options.push(<option key={i}>{i}</option>);
   }
 
   return (
     <>
-      <select>{options}</select>
-      <button onClick={plusCount}>검색</button>
+      <select ref={idSelectRef}>{options}</select>
+      <button onClick={() => search(idSelectRef.current.value)}>검색</button>
     </>
   );
 }

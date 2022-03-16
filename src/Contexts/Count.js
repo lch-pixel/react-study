@@ -1,22 +1,22 @@
 import { createContext, useState } from "react";
 
 const CountContext = createContext({
-  count: 0,
-  plusCount: () => {},
+  id: null,
+  search: () => {},
 });
 
 const CountProvider = ({ children }) => {
-  const [count, setCount] = useState(0);
+  const [id, setId] = useState(null);
 
-  const plusCount = () => {
-    setCount(count + 1);
+  const search = (value) => {
+    setId(value);
   };
 
   return (
     <CountContext.Provider
       value={{
-        count,
-        plusCount,
+        id,
+        search,
       }}
     >
       {children}
